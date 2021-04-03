@@ -3,14 +3,31 @@
 <html lang="en">
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link href="{% static "css/bootstrap.min.css" %}"
+          rel="stylesheet"
+    >
+    <link href="{% static "css/style.css" %}"
+          rel="stylesheet"
+    >
 </head>
-    <body>
-        {% include 'partials/_navbar.html' %}
-        <div class="container my-xl-4">
-            {% block content %}
-            {% endblock %}
-        </div>
-    </body>
+<body>
+{% include 'partials/_navbar.html' %}
+<div class="container my-xl-4">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class={{ message.tags }}>
+                    {{ message|safe }}
+                    <a href="#"
+                       class="close"
+                    >x</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
 </html>
