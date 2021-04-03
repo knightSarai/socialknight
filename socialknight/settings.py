@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'images.apps.ImagesConfig'
 ]
 
 LOGIN_REDIRECT_URL = 'dashboard'
