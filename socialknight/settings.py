@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'images.apps.ImagesConfig',
     'django_extensions',
+    'easy_thumbnails',
 ]
 
 LOGIN_REDIRECT_URL = 'dashboard'
