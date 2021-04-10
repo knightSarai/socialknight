@@ -1,0 +1,31 @@
+hr {
+    background: #d3d3d3;
+}
+
+.image-container {
+    display: flex;
+}
+
+.image-url {
+    height: 500px;
+    width: 500px;
+    padding-right: 1rem;
+}
+
+.image-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-likes {
+    display: inline-block;
+    border: 3px solid #854FAD;
+    font-size: 1.5rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.image-description {
+    margin-top: 10px;
+}

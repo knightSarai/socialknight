@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ image.title }}{% endblock %}
+<link href="{% static "css/image.css" %}"
+      rel="stylesheet"
+>
+{% block content %}
+    <h1>{{ image.title }}</h1>
+    <hr>
+    <div class="image-container">
+        <img src="{{ image.image.url }}"
+             alt="image-url"
+             class="image-url"
+        >
+        {% with total_likes=image.users_like.count %}
+            <div class="image-detail">
+                <div class="image-info">
+                    <div class="image-likes">
+                        {{ total_likes }} like{{ total_likes|pluralize }}
+                    </div>
+                    <h5 class="image-description">{{ image.description|linebreaks }}</h5>
+                </div>
+                <div>
+                    {% for user in image.users_like.all %}
+                        <div>
+                            <img src="{{ user.profile.photo.url }}">
+                            <p>{{ user.first_name }}</p>
+                        </div>
+                    {% empty %}
+                        Nobody likes this image yet.
+                    {% endfor %}
+                </div>
+            </div>
+        {% endwith %}
+    </div>
+
+{% endblock %}
