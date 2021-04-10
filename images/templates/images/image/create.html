@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Bookmark an image{% endblock %}
+{% comment %}
+http://127.0.0.1:8000/images/create/?title=%20Django%20and%20%20Duke&url=https://picjumbo.com/wp-content/uploads/beautiful-tuscan-landscape-around-pienza-town-italy-1080x720.jpg
+{% endcomment %}
+{% block content %}
+    <h1>Bookmark an image</h1>
+    <img src="{{ request.GET.url }}"
+         class="image-preview"
+    >
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit"
+               value="Bookmark it!"
+        >
+    </form>
+{% endblock %}
