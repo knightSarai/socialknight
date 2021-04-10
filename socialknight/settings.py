@@ -25,7 +25,8 @@ SECRET_KEY = '+-++v=f7d@^q@j&j@l&zzq+@_4xbx5ar%fc7v$f&w6_g8f!$t%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
+RUNSERVERPLUS_SERVER_ADDRESS_PORT = '127.0.0.1:8002'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'images.apps.ImagesConfig'
+    'images.apps.ImagesConfig',
+    'django_extensions',
 ]
 
 LOGIN_REDIRECT_URL = 'dashboard'
