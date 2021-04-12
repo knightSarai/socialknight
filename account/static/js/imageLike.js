@@ -18,7 +18,7 @@ const getCookie = name => {
 
 let csrftoken = getCookie('csrftoken');
 
-const postDate = async (url = '', data = {}) => {
+const postData = async (url = '', data = {}) => {
     try {
         let response = await fetch(url, {
             method: 'POST',
@@ -35,31 +35,26 @@ const postDate = async (url = '', data = {}) => {
 
 };
 
-
 likeBtn = $('#like-btn');
 link = likeBtn.getAttribute('data-link');
 imageId = likeBtn.getAttribute('data-id');
 imageAction = likeBtn.getAttribute('data-action');
 
-const postData = {
-    id: imageId,
-    action: imageAction
-};
-
 likeBtn.addEventListener('click', async () => {
-    const data = await postDate(link, postData);
+    const data = await postData(link, {
+        id: imageId,
+        action: imageAction
+    });
     if (data.status === 'ok') {
-        const likeBtn = $('#like-btn')
+        const likeBtn = $('#like-btn');
         let preAction = likeBtn.getAttribute('data-action');
         likeBtn.setAttribute(
             'data-action',
             preAction === 'like' ? 'unlike' : 'like'
         );
         likeBtn.textContent = preAction === 'like' ? 'unlike' : 'like';
-        const totalLikeSpan = $('.total-likes')
-        let prevLikesTotal = parseInt(totalLikeSpan.textContent)
-        console.log(prevLikesTotal);
-        totalLikeSpan.textContent = preAction === 'like' ? prevLikesTotal + 1 : prevLikesTotal - 1
-
+        const totalLikeSpan = $('.total-likes');
+        let prevLikesTotal = parseInt(totalLikeSpan.textContent);
+        totalLikeSpan.textContent = preAction === 'like' ? prevLikesTotal + 1 : prevLikesTotal - 1;
     }
 });
