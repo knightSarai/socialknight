@@ -1,17 +1,15 @@
 {% load thumbnail %}
 {% for image in images %}
-    <div class="image">
-        <a href="{{ image.get_absolute_url }}">
-            {% thumbnail image.image 300x300 crop="smart" as im %}
-            <a href="{{ image.get_absolute_url }}">
-                <img src="{{ im.url }}">
-            </a>
-        </a>
-        <div class="info">
+    <div class="image card" style="width: 15vw">
+        {% thumbnail image.image 300x300 crop="smart" as im %}
+        <img class="card-img-top" src="{{ im.url }}">
+        <div class="card-body">
+            <p class="card-title">{{ image.title }}</p>
+            <p class="card-text">{{ image.description|linebreaks }}</p>
             <a href="{{ image.get_absolute_url }}"
-               class="title"
+               class="btn btn-outline-primary"
             >
-                {{ image.title }}
+                See Image
             </a>
         </div>
     </div>

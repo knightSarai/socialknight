@@ -1,3 +1,9 @@
+#header {
+   display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 hr {
     background: #d3d3d3;
 }
@@ -15,6 +21,11 @@ hr {
     flex-direction: column;
 }
 
+.image-info {
+    display: flex;
+    justify-content: space-between;
+}
+
 .image-likes {
     display: inline-block;
     border: 3px solid #854FAD;
@@ -22,6 +33,11 @@ hr {
     padding: 0.5rem 0.7rem;
     border-radius: 15px;
     text-align: center;
+}
+
+#like-btn{
+    text-align: end;
+    margin: 0 1rem;
 }
 
 .image-description {
@@ -34,12 +50,48 @@ hr {
     flex-wrap: wrap;
 }
 
+.card {
+    background: transparent;
+}
+
+.card-title {
+    font-size: 1.1rem;
+}
+
 .image {
-    padding: 1rem 2rem;
+    margin: 1rem 2rem;
     transform: scale(0);
     transition: 0.5s;
 }
 
 .image.animate{
   transform: scale(1);
+}
+
+.user-list {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.75rem;
+}
+
+.user-img {
+    border-radius: 100%;
+}
+
+.user-name {
+    font-size: 1.25rem;
+}
+
+.image-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
