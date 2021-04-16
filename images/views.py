@@ -68,10 +68,8 @@ def image_like(request):
 
 def image_list(request):
     is_ajax = request.headers.get('x-requested-with') == 'XMLHttpRequest'
-
     json_data = json.loads(request.body) if is_ajax else {}
     page = json_data.get('page') if is_ajax else request.GET.get('page')
-
     images = Image.objects.all().order_by('-created')
     paginator = Paginator(images, 8)
 

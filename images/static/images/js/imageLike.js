@@ -4,7 +4,7 @@ imageId = likeBtn.getAttribute('data-id');
 imageAction = likeBtn.getAttribute('data-action');
 
 likeBtn.addEventListener('click', async () => {
-    const data = await postData(link, {
+    const data = await getJson(link, {
         id: imageId,
         action: imageAction
     });
