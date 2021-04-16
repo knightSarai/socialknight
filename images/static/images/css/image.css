@@ -27,3 +27,19 @@ hr {
 .image-description {
     margin-top: 10px;
 }
+
+#image-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.image {
+    padding: 1rem 2rem;
+    transform: scale(0);
+    transition: 0.5s;
+}
+
+.image.animate{
+  transform: scale(1);
+}
