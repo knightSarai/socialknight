@@ -18,19 +18,38 @@ const getCookie = name => {
 
 let csrftoken = getCookie('csrftoken');
 
-const postData = async (url = '', data = {}) => {
+const getJson = async (url = '', data = {}) => {
     try {
-        let response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                "X-CSRFToken": csrftoken,
-                'Content-Type': 'application/json',
-                'x-requested-with': 'XMLHttpRequest',
-            },
-            body: JSON.stringify(data)
-        });
+        let response = await makePostRequest(url, data);
         return response.json();
     } catch (err) {
         throw new Error(err);
     }
+};
+
+const getHTML = async (url = '', data = {}) => {
+    try {
+        let response = await makePostRequest(url, data);
+        return response.text();
+    } catch (err) {
+        throw new Error(err);
+    }
+};
+
+const makePostRequest = (url, data) => {
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            "X-CSRFToken": csrftoken,
+            'Content-Type': 'application/json',
+            'x-requested-with': 'XMLHttpRequest',
+        },
+        body: JSON.stringify(data)
+    });
+};
+
+const stringToHTML = str => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(str, 'text/html');
+    return doc.body;
 };
