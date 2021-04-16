@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'images/image/main_images.html' %}
 {% load static %}
 {% block title %}Images bookmarked{% endblock %}
 {% block content %}
@@ -6,5 +6,7 @@
     <div id="image-list">
         {% include "images/image/list_ajax.html" %}
     </div>
-    <script src="{% static 'js/imageList.js' %}"></script>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'images/js/imageList.js' %}"></script>
 {% endblock %}

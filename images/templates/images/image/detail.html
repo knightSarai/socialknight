@@ -1,9 +1,6 @@
-{% extends "base.html" %}
+{% extends 'images/image/main_images.html' %}
 {% load static %}
 {% block title %}{{ image.title }}{% endblock %}
-<link href="{% static "css/image.css" %}"
-      rel="stylesheet"
->
 {% block content %}
     <h1>{{ image.title }}</h1>
     <hr>
@@ -47,5 +44,7 @@
             </div>
         {% endwith %}
     </div>
-    <script src="{% static 'js/imageLike.js' %}"></script>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'images/js/imageLike.js' %}"></script>
 {% endblock %}

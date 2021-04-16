@@ -6,13 +6,10 @@
     <link href="{% static "css/bootstrap.min.css" %}"
           rel="stylesheet"
     >
-    <link href="{% static "css/style.css" %}"
+    <link href="{% static "/css/style.css" %}"
           rel="stylesheet"
     >
-    <link href="{% static "css/image.css" %}"
-          rel="stylesheet"
-    >
-{% block styles %} {% endblock %}
+    {% block styles %} {% endblock %}
 </head>
 <body>
 {% include 'partials/_navbar.html' %}
@@ -33,5 +30,11 @@
     {% block content %}
     {% endblock %}
 </div>
+<script src={% static 'js/app.js' %}></script>
+<script>
+    window.addEventListener('load', () => console.log('ready'));
+</script>
+{% block script %}
+{% endblock %}
 </body>
 </html>
