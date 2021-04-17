@@ -5,6 +5,9 @@ from django.urls import reverse
 
 
 class Image(models.Model):
+    class Meta:
+        ordering = ('-created',)
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='images_created', on_delete=models.CASCADE)
     users_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='images_liked', blank=True)
     title = models.CharField(max_length=170)
