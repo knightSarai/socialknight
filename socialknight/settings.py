@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.urls import reverse_lazy
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -29,6 +31,13 @@ ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 RUNSERVERPLUS_SERVER_ADDRESS_PORT = '127.0.0.1:8002'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy(
+        'user_detail',
+        args=[u.username]
+    )
+}
 
 # Application definition
 

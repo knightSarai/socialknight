@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
 
 
 @login_required
@@ -55,5 +57,35 @@ def edit(request):
         {
             'user_form': user_form,
             'profile_form': profile_form,
+        }
+    )
+
+
+@login_required
+def user_list(request):
+    users = User.objects.filter(is_active=True)
+    return render(
+        request,
+        'account/user/list.html',
+        {
+            'section': 'people',
+            'users': users
+        }
+    )
+
+
+@login_required
+def user_detail(request, username):
+    user = get_object_or_404(
+        User,
+        username=username,
+        is_active=True
+    )
+    return render(
+        request,
+        'account/user/detail.html',
+        {
+            'section': 'people',
+            'user': user
         }
     )
