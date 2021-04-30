@@ -7,17 +7,19 @@
             <img alt="{{ user.get_full_name }}"
                  src="{% thumbnail user.profile.photo 180x180 %}"
             >
-            <p class="mt-2 text-info user-name">{{ user.get_full_name }}</p>
+            <p class="mt-2 text-warning user-name">{{ user.get_full_name }}</p>
             <div class="user-follow">
                 {% with total_followers=user.followers.count %}
-                    <span class="count">
+                    <span class="follower-count">
                         <span class="total">{{ total_followers }}</span>
                         follower{{ total_followers|pluralize }}
                     </span>
                     <a href="#"
+                       id="follow-btn"
                        data-id="{{ user.id }}"
+                       data-link="{% url "account:user_follow" %}"
                        data-action="{% if request.user in user.followers.all %}un{% endif %}follow"
-                       class="mt-2 btn btn-outline-info"
+                       class="mt-2 btn btn-outline-warning"
                     >
                         {% if request.user not in user.followers.all %}
                             Follow
@@ -29,7 +31,7 @@
             </div>
         </div>
         <div class="image-list">
-            {% with images=user.images_created.all %}
+            {% with images=user.images_created.all.order_by %}
                 {% if images %}
                     {% include "images/image/list_ajax.html" with images=images %}
                     {% else %}

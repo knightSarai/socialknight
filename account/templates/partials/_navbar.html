@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
-    <a class="navbar-brand"
+    <a class="navbar-brand text-info"
        href="#"
     >SocialKnight</a>
     <button class="navbar-toggler"
@@ -12,25 +12,24 @@
     >
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse"
          id="navbarColor02"
     >
         {% if request.user.is_authenticated %}
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item {% if section == "dashboard" %} active {% endif %}">
-                    <a class="nav-link"
-                       href="{% url "dashboard" %}"
+                <li class="nav-item ">
+                    <a class="nav-link text-info {% if section == "dashboard" %} active {% endif %}"
+                       href="{% url "account:dashboard" %}"
                     >My dashboard</a>
                 </li>
-                <li class="nav-item {% if section == "images" %} active {% endif %}">
-                    <a class="nav-link"
+                <li class="nav-item ">
+                    <a class="nav-link text-info {% if section == "images" %} active {% endif %}"
                        href="/images"
                     >Images</a>
                 </li>
-                <li class="nav-item {% if section == "people" %} active {% endif %}">
-                    <a class="nav-link"
-                       href="{% url "user_list" %}"
+                <li class="nav-item">
+                    <a class="nav-link text-info {% if section == "people" %} active {% endif %}"
+                       href="{% url "account:user_list" %}"
                     >People</a>
                 </li>
             </ul>
@@ -39,11 +38,11 @@
             {% if request.user.is_authenticated %}
                 Hello {{ request.user.first_name }},
                 <a class="btn btn-outline-warning mx-xl-4"
-                   href="{% url "logout" %}"
+                   href="{% url "account:logout" %}"
                 >Logout</a>
             {% else %}
                 <a class="btn btn-outline-warning mx-xl-4"
-                   href="{% url "login" %}"
+                   href="{% url "account:login" %}"
                 >Login</a>
             {% endif %}
         </div>

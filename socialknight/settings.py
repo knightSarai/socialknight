@@ -34,7 +34,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy(
-        'user_detail',
+        'account:user_detail',
         args=[u.username]
     )
 }
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
 ]
 
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'account:dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
