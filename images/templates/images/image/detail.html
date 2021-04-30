@@ -5,7 +5,7 @@
 {% block content %}
     {% with total_likes=image.users_like.count users_like=image.users_like.all %}
         <header id="header">
-            <h1>{{ image.title }}</h1>
+            <h2 class="text-info">{{ image.title }}</h2>
             <div class="image-likes">
                 <span class="total-likes">{{ total_likes }}</span> like{{ total_likes|pluralize }}
             </div>
@@ -20,7 +20,6 @@
                 <div class="image-info">
                     <h5 class="image-description">{{ image.description|linebreaks }}</h5>
                 </div>
-
             </div>
         </div>
         <div class="image-action">

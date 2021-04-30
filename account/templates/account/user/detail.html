@@ -1,31 +1,42 @@
-{% extends "base.html" %}
+{% extends "account/user/main_user.html" %}
 {% load thumbnail %}
 {% block title %}{{ user.get_full_name }}{% endblock %}
 {% block content %}
-    <h1>{{ user.get_full_name }}</h1>
-    <div class="profile-info">
-        <img src="{% thumbnail user.profile.photo 180x180 %}"
-             class="user-detail"
-        >
-    </div>
-    {% with total_followers=user.followers.count %}
-        <span class="count">
-            <span class="total">{{ total_followers }}</span>
-            follower{{ total_followers|pluralize }}
-        </span>
-        <a href="#"
-           data-id="{{ user.id }}"
-           data-action="{% if request.user in user.followers.all %}un{% endif %}follow"
-           class="follow button"
-        >
-            {% if request.user not in user.followers.all %}
-                Follow
-            {% else %}
-                Unfollow
-            {% endif %}
-        </a>
-        <div class="image-list">
-            {% include "images/image/list_ajax.html" with images=user.images_created.all %}
+    <div id="user-profile" >
+        <div class="profile-info">
+            <img alt="{{ user.get_full_name }}"
+                 src="{% thumbnail user.profile.photo 180x180 %}"
+            >
+            <p class="mt-2 text-info user-name">{{ user.get_full_name }}</p>
+            <div class="user-follow">
+                {% with total_followers=user.followers.count %}
+                    <span class="count">
+                        <span class="total">{{ total_followers }}</span>
+                        follower{{ total_followers|pluralize }}
+                    </span>
+                    <a href="#"
+                       data-id="{{ user.id }}"
+                       data-action="{% if request.user in user.followers.all %}un{% endif %}follow"
+                       class="mt-2 btn btn-outline-info"
+                    >
+                        {% if request.user not in user.followers.all %}
+                            Follow
+                        {% else %}
+                            Unfollow
+                        {% endif %}
+                    </a>
+                {% endwith %}
+            </div>
         </div>
-    {% endwith %}
+        <div class="image-list">
+            {% with images=user.images_created.all %}
+                {% if images %}
+                    {% include "images/image/list_ajax.html" with images=images %}
+                    {% else %}
+                    <h5 class="text-warning user-no-images">Oops!! User didn't book mark or upload any images yet!</h5>
+                {% endif %}
+
+            {% endwith %}
+        </div>
+    </div>
 {% endblock %}

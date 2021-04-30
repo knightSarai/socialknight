@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+    <link href="{% static "images/css/image.css" %}"
+          rel="stylesheet"
+    >
+    <link href="{% static "account/css/user.css" %}"
+          rel="stylesheet"
+    >
+{% endblock %}
+{% block script %}
+    <script src="{% static 'images/js/imageList.js' %}"></script>
+{% endblock %}

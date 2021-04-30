@@ -1,0 +1,42 @@
+#people-list {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.75rem;
+}
+
+.user-img {
+    border-radius: 100%;
+    height: 180px;
+    width: 180px;
+}
+
+.info {
+    font-size: 1.75rem;
+}
+
+#user-profile {
+    display: flex;
+}
+
+.profile-info .user-name{
+    width: 180px;
+    font-size: 1.75rem;
+}
+
+.user-follow {
+    font-size: 17px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-no-images {
+    margin: auto 0  auto 18vw;
+}

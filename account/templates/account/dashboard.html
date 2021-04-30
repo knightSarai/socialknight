@@ -2,12 +2,12 @@
 {% block title %}Dashboard{% endblock %}
 {% block content %}
     <div class="jumbotron">
-        <h1>Dashboard</h1>
-        <p>
+        <h2 class="text-info">Dashboard</h2>
+        <h5>
             Welcome to your dashboard.
             You can <a href="{% url "edit" %}">edit your profile </a>
             or <a href="{% url "password_change" %}">
             change your password</a>.
-        </p>
+        </h5>
     </div>
 {% endblock %}

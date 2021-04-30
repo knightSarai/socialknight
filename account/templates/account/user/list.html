@@ -1,18 +1,19 @@
-{% extends "base.html" %}
+{% extends "account/user/main_user.html" %}
+
 {% load thumbnail %}
 {% block title %}People{% endblock %}
 {% block content %}
-    <h1>People</h1>
+    <h1 class="text-info">People</h1>
     <div id="people-list">
         {% for user in users %}
             <div class="user">
                 <a href="{{ user.get_absolute_url }}">
-                    <img src="{% thumbnail user.profile.photo 180x180 %}">
+                    <img alt="{{ user.get_full_name }}"
+                         class="user-img"
+                         src="{% thumbnail user.profile.photo  180x180%}">
                 </a>
-                <div class="info">
-                    <a href="{{ user.get_absolute_url }}"
-                       class="title"
-                    >
+                <div class="info mt-2">
+                    <a class="text-info" href="{{ user.get_absolute_url }}">
                         {{ user.get_full_name }}
                     </a>
                 </div>
